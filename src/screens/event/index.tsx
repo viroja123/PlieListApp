@@ -8,20 +8,19 @@ import EventCard from '../../components/ListRender';
 const EventScreen = () => {
   const [data, setData] = useState([]);
   const { list, loading } = useSelector((state: any) => state.events);
-  const { data: datalist } = useSelector((state: any) => state.auth.user);
-  const fetch = async () => {
+  const user = useSelector((state: any) => state.auth.user);
+   const fetch = async () => {
     const data = await eventApi();
     if (data) {
-      setData(data.events);
+      setData(data?.events);
     }
   }
   useEffect(() => {
     fetch();
   }, []);
-
   const renderHeader = () => (
     <View style={styles.headerContainer}>
-      <Text style={styles.greetingText}>Hello {datalist?.user?.usr_fname ?? 'Unknown'}</Text>
+      <Text style={styles.greetingText}>Hello {user?.user?.usr_fname ?? 'Unknown'}</Text>
       <Text style={styles.subGreetingText}>Are you ready to dance?</Text>
     </View>
   );

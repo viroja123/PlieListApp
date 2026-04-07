@@ -1,0 +1,1 @@
+export const baseUrl = 'https://techeruditestaging.com/projects/plie-api/public/api'
